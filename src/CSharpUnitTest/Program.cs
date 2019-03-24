@@ -51,9 +51,19 @@ namespace CSharpUnitTest
 
         static void PrintAge() {
             Console.WriteLine("Hello... what is your age?");
-            var age = Console.ReadLine();
+            int ageInt = 0;
+            var age = String.Empty;               
 
-            Console.WriteLine(age);
+            do {
+                age = Console.ReadLine();
+                Int32.TryParse(age, out ageInt);
+
+                if (ageInt == 0)
+                    Console.WriteLine("Please write a valid number");
+                
+            } while (ageInt == 0);
+
+            Console.WriteLine("Your age is: " + ageInt);
         }
     }
 }
