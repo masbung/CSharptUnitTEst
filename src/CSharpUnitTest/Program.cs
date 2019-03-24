@@ -49,21 +49,27 @@ namespace CSharpUnitTest
             Console.WriteLine("Total small bags two: " + totalSmallBagsTwo);
         }
 
-        static void PrintAge() {
+        static void PrintAge() {                        
+            var age = String.Empty;                           
+
+            var ageInt = AskForAge(age);
+
+            Console.WriteLine("Your age is: " + ageInt);
+        }
+
+        static int AskForAge(string age) {
             Console.WriteLine("Hello... what is your age?");
             int ageInt = 0;
-            var age = String.Empty;               
-
             do {
                 age = Console.ReadLine();
                 Int32.TryParse(age, out ageInt);
 
                 if (ageInt == 0)
                     Console.WriteLine("Please write a valid number");
-                
-            } while (ageInt == 0);
 
-            Console.WriteLine("Your age is: " + ageInt);
+            } while (ageInt == 0);            
+
+            return ageInt;
         }
     }
 }
