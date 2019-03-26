@@ -11,21 +11,64 @@ namespace CSharpUnitTest
         static void Main(string[] args) {
             //PrintSum();
             //PrintCandies();
-            PrintAge();
+            //PrintAge();
+            //PermissionToPass(21);
+
+            var stringAGe = String.Empty;
+
+            int age = AskForAge(stringAGe);
+
+            int totalMun = 0;
+
+            for (int i = 1; i < 5; i++) {
+
+                Console.WriteLine("Municipio " + i);
+                var input = Console.ReadLine();
+                var inputInt = 0;
+
+                Int32.TryParse(input, out inputInt);
+
+                totalMun += inputInt;
+            }
+
+            //while (0 < 1) {
+            //    var hola = "sdfsdf";
+            //}
+
+            //Console.WriteLine("Total: " + totalMun);         
+
+
         }
 
         static void PrintSum() {
             var mathCalculator = new MathCalculator();
-            var sum = mathCalculator.Add(3, 5);
+            var sum = mathCalculator.Add(3, 5);           
             Console.WriteLine(sum.Value);
         }
 
-        static void PrintCandies() {
-            int candies = 865;
-            int bigBagCapacity = 25;
-            int smallBagCapacity = 10;
+        static void PermissionToPass(int permittedAge) {
+            Console.WriteLine("What is your age?");
+            var age = Console.ReadLine();            
 
-            decimal firstDivision = candies / bigBagCapacity;
+            int ageInt = 0;
+
+            Int32.TryParse(age, out ageInt);
+
+            if (ageInt >= permittedAge) {
+                Console.WriteLine("You can enter the library");
+            } else {
+                Console.WriteLine("You CAN'T enter the library");
+            }
+        }
+
+        static void PrintCandies() {
+            decimal candies = 865;
+            decimal bigBagCapacity = 25;
+            decimal smallBagCapacity = 10;
+
+            decimal firstDivision = 0.00m;
+
+            firstDivision = candies / bigBagCapacity;
 
             var totalBigBags = Math.Truncate(firstDivision);
             Console.WriteLine("Total big bags: " + totalBigBags);
@@ -36,7 +79,7 @@ namespace CSharpUnitTest
             var remainCandies = candies % bigBagCapacity;
             Console.WriteLine("Remain candies: " + remainCandies);
 
-            var totalSmallBags = remainCandies / smallBagCapacity;
+            var totalSmallBags = Math.Ceiling(remainCandies / smallBagCapacity);
             Console.WriteLine("Total small bags: " + totalSmallBags);
 
             remainCandies = remainCandies % smallBagCapacity;
